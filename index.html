@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nusrat Jahan Jenin | EEE &amp; Solar Energy E-Portfolio</title>
+    <meta name="description"
+        content="E-Portfolio of Nusrat Jahan Jenin, Electrical and Electronic Engineering student at AIUB, focused on solar PV and sustainable energy systems.">
+    <meta name="theme-color" content="#170329">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ==========================================================
+   DESIGN TOKENS  (derived from design.md, base theme #24063f)
+   Spacing unit: 6px · Radii: 20px+ · Heading 700 / Body 400
+   ========================================================== */
+        :root {
+            --bg: #170329;
+            /* primary canvas (requested dark purple) */
+            --bg-alt: #100220;
+            /* alternate section band */
+            --card: #2e0c4f;
+            /* card surface */
+            --card-hi: #3a1062;
+            /* card hover / raised */
+            --line: rgba(196, 196, 204, .16);
+            --ink: #c4c4cc;
+            /* body text (design.md) */
+            --muted: #a99dbb;
+            --heading: #ffffff;
+            --accent: #9d29f0;
+            /* primary accent / CTA (design.md) */
+            --accent2: #5eead4;
+            /* secondary accent (design.md) */
+            --on-accent: #1b0430;
+            --tag-bg: #3a1062;
+            --tag-text: #d4d4dc;
+            --nav-bg: rgba(20, 3, 36, .88);
+            --shadow-deep: 0 30px 60px rgba(0, 0, 0, .35);
+            --shadow-high: 0 8px 24px rgba(0, 0, 0, .4);
+            --u: 6px;
+            --r: 20px;
+            --r-lg: 28px;
+            --r-pill: 999px;
+            --head: "Space Grotesk", system-ui, sans-serif;
+            --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max: 1400px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--u)*14)
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 400 16px/1.65 var(--body);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            display: block
+        }
+
+        a {
+            color: var(--accent2);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--head);
+            color: var(--heading);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.15
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5.4vw, 3.6rem);
+            letter-spacing: -.02em
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+            letter-spacing: -.01em
+        }
+
+        h3 {
+            font-size: 1.2rem
+        }
+
+        p {
+            margin: 0 0 calc(var(--u)*2)
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 8px
+        }
+
+        .skip {
+            position: absolute;
+            left: -999px;
+            top: 12px;
+            background: var(--accent);
+            color: var(--on-accent);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 200
+        }
+
+        .skip:focus {
+            left: 12px
+        }
+
+        .wrap {
+            width: min(100% - 48px, var(--max));
+            margin-inline: auto
+        }
+
+        section {
+            padding: calc(var(--u)*16) 0;
+            position: relative
+        }
+
+        section.alt {
+            background: rgba(10, 1, 22, .55)
+        }
+
+        .eyebrow {
+            font: 700 .8rem/1 var(--body);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: calc(var(--u)*2);
+            display: block
+        }
+
+        .lead {
+            font-size: 1.08rem;
+            max-width: 64ch
+        }
+
+        .sec-head {
+            margin-bottom: calc(var(--u)*8);
+            max-width: 720px
+        }
+
+        .sec-head p {
+            color: var(--muted);
+            margin-top: calc(var(--u)*2)
+        }
+
+        /* Buttons (design.md: filled / outline) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 13px 26px;
+            border-radius: var(--r-pill);
+            font: 600 .95rem var(--body);
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: transform .25s, background .25s, box-shadow .25s, border-color .25s;
+            text-decoration: none !important
+        }
+
+        .btn-fill {
+            background: var(--accent);
+            color: var(--on-accent)
+        }
+
+        .btn-fill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(240, 180, 41, .3)
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--heading);
+            border-color: var(--line)
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent2);
+            color: var(--accent2);
+            transform: translateY(-3px)
+        }
+
+        /* Header */
+        header.top {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px
+        }
+
+        .brand {
+            font: 700 1.15rem var(--head);
+            color: var(--heading);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none !important
+        }
+
+        .brand .dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--on-accent);
+            display: grid;
+            place-items: center;
+            font-size: .9rem
+        }
+
+        .menu {
+            display: flex;
+            gap: 6px
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px 18px;
+            border-radius: var(--r-pill);
+            color: var(--ink);
+            font-weight: 500;
+            font-size: .95rem;
+            text-decoration: none !important;
+            transition: background .2s, color .2s
+        }
+
+        .menu a:hover {
+            background: var(--tag-bg);
+            color: var(--heading)
+        }
+
+        .menu a.active {
+            color: var(--accent);
+            background: rgba(240, 180, 41, .1)
+        }
+
+        .burger {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--heading);
+            cursor: pointer
+        }
+
+        .burger span,
+        .burger span::before,
+        .burger span::after {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: currentColor;
+            margin: auto;
+            position: relative;
+            transition: .25s
+        }
+
+        .burger span::before,
+        .burger span::after {
+            content: "";
+            position: absolute;
+            left: 0
+        }
+
+        .burger span::before {
+            top: -6px
+        }
+
+        .burger span::after {
+            top: 6px
+        }
+
+        .burger[aria-expanded="true"] span {
+            background: transparent
+        }
+
+        .burger[aria-expanded="true"] span::before {
+            top: 0;
+            transform: rotate(45deg)
+        }
+
+        .burger[aria-expanded="true"] span::after {
+            top: 0;
+            transform: rotate(-45deg)
+        }
+
+        /* Hero */
+        #home {
+             padding-top: 140px;
+    overflow: hidden;
+        }
+
+        #home::before,
+        #home::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            pointer-events: none
+        }
+
+        #home::before {
+            width: 420px;
+            height: 420px;
+            background: #6b1fb5;
+            opacity: .35;
+            top: 40px;
+            right: -80px
+        }
+
+        #home::after {
+            width: 320px;
+            height: 320px;
+            background: var(--accent2);
+            opacity: .08;
+            bottom: 0;
+            left: -80px
+        }
+
+        .hero {
+            display: grid;
+    grid-template-columns: 1.3fr .9fr;
+    gap: 60px;
+    align-items: center;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+        }
+
+        .hero .role {
+              font: 500 1.1rem var(--head);
+    color: var(--accent2);
+    margin: 12px 0 18px;
+    white-space: nowrap;
+        }
+
+        .hero .cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: calc(var(--u)*4)
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--u)*4);
+            margin-top: calc(var(--u)*7);
+            padding-top: calc(var(--u)*4);
+            border-top: 1px solid var(--line)
+        }
+
+        .stat strong {
+            display: block;
+            font: 700 1.8rem var(--head);
+            color: var(--heading)
+        }
+
+        .stat span {
+            font-size: .85rem;
+            color: var(--muted)
+        }
+
+        .photo {
+            position: relative;
+    justify-self: center;
+    width: min(100%, 480px);
+        }
+
+        .photo::before {
+            content: "";
+            position: absolute;
+            inset: 18px -18px -18px 18px;
+            border: 2px solid var(--accent);
+            border-radius: var(--r-lg);
+            opacity: .55
+        }
+
+        .photo img {
+            position: relative;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3/3.2;
+            object-fit: cover;
+            object-position: 50% 20%;
+            border-radius: var(--r-lg);
+            box-shadow: var(--shadow-deep)
+        }
+
+        .photo .chip {
+            position: absolute;
+            left: -18px;
+            bottom: 30px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            padding: 12px 18px;
+            border-radius: var(--r);
+            box-shadow: var(--shadow-high);
+            font-size: .85rem;
+            color: var(--heading);
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent2);
+            box-shadow: 0 0 0 0 rgba(94, 234, 212, .6);
+            animation: pulse 2s infinite
+        }
+
+        @keyframes pulse {
+            70% {
+                box-shadow: 0 0 0 12px rgba(94, 234, 212, 0)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(94, 234, 212, 0)
+            }
+        }
+
+        /* Cards */
+        .grid {
+            display: grid;
+            gap: calc(var(--u)*4)
+        }
+
+        .g2 {
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        .g3 {
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--r);
+            padding: calc(var(--u)*5);
+            transition: transform .3s, border-color .3s, background .3s
+        }
+
+        .card:hover {
+            border-color: rgba(240, 180, 41, .4)
+        }
+
+        .card h3 {
+            margin-bottom: calc(var(--u)*2)
+        }
+
+        .card .ico {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(240, 180, 41, .12);
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+            margin-bottom: calc(var(--u)*3)
+        }
+
+        .card .ico svg {
+            width: 24px;
+            height: 24px
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: calc(var(--u)*5)
+        }
+
+        .placeholder {
+            border-style: dashed;
+            background: transparent
+        }
+
+        .ph {
+            display: inline-block;
+            color: var(--accent);
+            font-size: .85rem;
+            border: 1px dashed rgba(240, 180, 41, .6);
+            padding: 3px 12px;
+            border-radius: var(--r-pill)
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 6px 14px;
+            border-radius: var(--r-pill);
+            font-size: .82rem;
+            border: 1px solid var(--line)
+        }
+
+        .tag.dash {
+            background: transparent;
+            border-style: dashed;
+            color: var(--accent)
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(var(--accent), transparent)
+        }
+
+        .tl {
+            position: relative;
+            margin-bottom: calc(var(--u)*4)
+        }
+
+        .tl::before {
+            content: "";
+            position: absolute;
+            left: -30px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 3px solid var(--accent)
+        }
+
+        .tl h4 {
+            font-size: 1.05rem
+        }
+
+        .tl .when {
+            font-size: .82rem;
+            color: var(--accent2);
+            font-weight: 600
+        }
+
+        .tl p {
+            color: var(--muted);
+            margin: 4px 0 0;
+            font-size: .95rem
+        }
+
+        .resume-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--u)*5);
+            margin-bottom: calc(var(--u)*5)
+        }
+
+        .skill-block h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: calc(var(--u)*3);
+            font-size: 1.05rem
+        }
+
+        .skill-block li {
+            margin-bottom: calc(var(--u)*2);
+            font-size: .95rem
+        }
+
+        .skill-block li b {
+            color: var(--heading);
+            font-weight: 600
+        }
+
+        .lang {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        /* Projects */
+        .pcard {
+            padding: 0;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: left;
+            font: inherit;
+            color: inherit;
+            width: 100%;
+            display: flex;
+            flex-direction: column
+        }
+
+        .pcard:hover {
+            transform: translateY(-8px);
+            background: var(--card-hi);
+            box-shadow: var(--shadow-high)
+        }
+
+        .pcard .thumb {
+            aspect-ratio: 16/10;
+            background: linear-gradient(140deg, #4a1480, #24063f);
+            position: relative;
+            overflow: hidden
+        }
+
+        .pcard .thumb svg,
+        .pcard .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s
+        }
+
+        .pcard:hover .thumb svg,
+        .pcard:hover .thumb img {
+            transform: scale(1.07)
+        }
+
+        .pcard .body {
+            padding: calc(var(--u)*4);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1
+        }
+
+        .pcard .more {
+            margin-top: auto;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .pcard .more svg {
+            width: 16px;
+            height: 16px;
+            transition: transform .25s
+        }
+
+        .pcard:hover .more svg {
+            transform: translateX(6px)
+        }
+
+        .pcard p {
+            color: var(--muted);
+            font-size: .93rem;
+            margin: 0
+        }
+
+        .cap {
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            background: rgba(27, 4, 48, .82);
+            color: var(--tag-text);
+            font-size: .72rem;
+            padding: 4px 12px;
+            border-radius: var(--r-pill)
+        }
+
+        dialog {
+            width: min(860px, calc(100% - 32px));
+            max-height: calc(100dvh - 48px);
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            background: var(--card);
+            color: var(--ink);
+            box-shadow: var(--shadow-deep);
+            overflow: auto
+        }
+
+        dialog::backdrop {
+            background: rgba(10, 2, 20, .78);
+            backdrop-filter: blur(4px)
+        }
+
+        dialog[open] {
+            animation: pop .35s cubic-bezier(.2, .8, .2, 1)
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(.97)
+            }
+        }
+
+        .dlg-x {
+            position: sticky;
+            top: 12px;
+            float: right;
+            margin: 12px 12px 0 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--bg-alt);
+            color: var(--heading);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 2
+        }
+
+        .dlg-x:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        .dlg-body {
+            padding: 0 calc(var(--u)*6) calc(var(--u)*6)
+        }
+
+        .dlg-hero {
+            aspect-ratio: 16/9;
+            max-height: 320px;
+            overflow: hidden;
+            margin: 0 calc(var(--u)*-6) calc(var(--u)*4);
+            background: linear-gradient(140deg, #4a1480, #24063f);
+            position: relative
+        }
+
+        .dlg-hero svg,
+        .dlg-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .dlg-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--u)*4);
+            margin-top: calc(var(--u)*4)
+        }
+
+        .dlg-grid h4 {
+            font-size: .8rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-family: var(--body)
+        }
+
+        .dlg-grid li {
+            padding-left: 22px;
+            position: relative;
+            margin-bottom: 8px;
+            font-size: .95rem
+        }
+
+        .dlg-grid li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .6em;
+            width: 10px;
+            height: 2px;
+            background: var(--accent2)
+        }
+
+        .dlg-full {
+            grid-column: 1/-1
+        }
+
+        /* Video */
+        .video {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: calc(var(--u)*5);
+            align-items: start
+        }
+
+        .player {
+            aspect-ratio: 16/9;
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-deep);
+            position: relative
+        }
+
+        .player iframe,
+        .player video {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block
+        }
+
+        .player .poster {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 24px
+        }
+
+        .player .poster img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 20%;
+            opacity: .28;
+            filter: blur(2px)
+        }
+
+        .player .poster div {
+            position: relative;
+            max-width: 360px
+        }
+
+        .play {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--on-accent);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 18px;
+            opacity: .9
+        }
+
+        .play svg {
+            width: 30px;
+            height: 30px;
+            margin-left: 4px
+        }
+
+        .script li {
+            display: flex;
+            gap: 18px;
+            margin-bottom: calc(var(--u)*3)
+        }
+
+        .script .n {
+            flex: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--tag-bg);
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+            font: 700 .9rem var(--head)
+        }
+
+        .script b {
+            color: var(--heading);
+            display: block
+        }
+
+        .script span {
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        /* Contact */
+        .contact {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: calc(var(--u)*6)
+        }
+
+        .clist li {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: calc(var(--u)*3)
+        }
+
+        .clist .ico {
+            margin: 0;
+            flex: none
+        }
+
+        .clist small {
+            display: block;
+            color: var(--muted);
+            font-size: .8rem
+        }
+
+        .clist a,
+        .clist span.v {
+            color: var(--heading);
+            font-weight: 500;
+            word-break: break-word
+        }
+
+        form label {
+            display: block;
+            font-weight: 600;
+            font-size: .88rem;
+            color: var(--heading);
+            margin-bottom: 6px
+        }
+
+        form .row {
+            margin-bottom: calc(var(--u)*3)
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            background: var(--bg-alt);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 14px 18px;
+            color: var(--heading);
+            font: inherit;
+            transition: border-color .2s, box-shadow .2s
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #8a7ca0
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(240, 180, 41, .2)
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical
+        }
+
+        .note {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 12px
+        }
+
+        footer {
+            padding: calc(var(--u)*6) 0;
+            border-top: 1px solid var(--line);
+            background: rgba(10, 1, 22, .7);
+            font-size: .88rem;
+            color: var(--muted)
+        }
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .totop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--on-accent);
+            border: 0;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: var(--shadow-high);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            transition: .3s;
+            z-index: 90
+        }
+
+        .totop.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: none
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
+            transition-delay: var(--d, 0s)
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .no-js .reveal {
+            opacity: 1;
+            transform: none
+        }
+
+        /* Responsive */
+        @media (max-width:1024px) {
+            .g3 {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .video,
+            .contact {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media (max-width:820px) {
+            .burger {
+                display: block
+            }
+
+            .menu {
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                padding: 12px 24px 24px;
+                background: var(--bg-alt);
+                border-bottom: 1px solid var(--line);
+                display: none
+            }
+
+            .menu.open {
+                display: flex
+            }
+
+            .menu a {
+                padding: 14px 18px
+            }
+
+             .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero .role {
+        white-space: normal;
+    }
+            .about,
+            .resume-cols {
+                grid-template-columns: 1fr
+            }
+
+            .photo {
+                order: -1;
+                width: min(76%, 300px);
+                margin-bottom: 24px
+            }
+
+            .photo .chip {
+                left: 0
+            }
+
+            #home {
+                padding-top: calc(var(--u)*24)
+            }
+
+            section {
+                padding: calc(var(--u)*12) 0
+            }
+        }
+
+        @media (max-width:640px) {
+            .wrap {
+                width: min(100% - 32px, var(--max))
+            }
+
+            .g2,
+            .g3,
+            .dlg-grid {
+                grid-template-columns: 1fr
+            }
+
+            .dlg-body {
+                padding: 0 calc(var(--u)*3) calc(var(--u)*4)
+            }
+
+            .dlg-hero {
+                margin: 0 calc(var(--u)*-3) calc(var(--u)*4)
+            }
+
+            .card {
+                padding: calc(var(--u)*4)
+            }
+
+            .hero .cta .btn {
+                flex: 1 1 100%
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        /* ==========================================================
+           3D GLOW BACKGROUND + CURSOR EFFECT (added)
+           ========================================================== */
+        #bg3d,
+        #fx {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none
+        }
+
+        #bg3d {
+            z-index: 0
+        }
+
+        #fx {
+            z-index: 150
+        }
+
+        main,
+        footer {
+            position: relative;
+            z-index: 1
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 50% at 80% 10%, rgba(107, 31, 181, .28), transparent 70%),
+                radial-gradient(ellipse 50% 45% at 10% 90%, rgba(94, 234, 212, .08), transparent 70%),
+                radial-gradient(ellipse 100% 80% at 50% 50%, transparent 55%, rgba(0, 0, 0, .45) 100%)
+        }
+    </style>
+</head>
+
+<body class="no-js">
+    <canvas id="bg3d" aria-hidden="true"></canvas>
+    <canvas id="fx" aria-hidden="true"></canvas>
+    <a class="skip" href="#main">Skip to main content</a>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="top">
+        <div class="wrap nav">
+            <a class="brand" href="#home" aria-label="Nusrat Jahan Jenin, home"><span class="dot"
+                    aria-hidden="true">NJ</span>Nusrat Jahan Jenin</a>
+            <nav aria-label="Primary">
+                <ul class="menu" id="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#video">Intro Video</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="menu"><span></span></button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- ===================== HOME ===================== -->
+        <section id="home" aria-labelledby="h-name">
+            <div class="wrap">
+                <div class="hero">
+                    <div>
+                        <span class="eyebrow reveal">></span>
+                        
+                        
+            
+                        
+                        <h1 id="h-name" class="reveal" style="--d:.08s">Hi, I'm Nusrat Jahan Jenin</h1>
+                        <p class="role reveal" style="--d:.16s">EEE Undergraduate · AIUB · Solar PV &amp; Sustainable
+                            Energy</p>
+                        <p class="lead reveal" style="--d:.24s">I'm an Electrical and Electronic Engineering student at
+                            American International University-Bangladesh, passionate about electrical systems, renewable
+                            energy and sustainable technologies. I enjoy turning real site conditions (roof area,
+                            shading, load and water demand) into clear, well-documented solar designs.</p>
+                        <div class="cta reveal" style="--d:.32s">
+                            <a class="btn btn-fill" href="#projects">View my projects</a>
+                            <a class="btn btn-outline" href="#contact">Get in touch</a>
+                        </div>
+                        <div class="stats reveal" style="--d:.4s">
+                            <div class="stat"><strong>3</strong><span>Solar design projects</span></div>
+                            <div class="stat"><strong>BSc EEE</strong><span>AIUB · expected 2028</span></div>
+                            <div class="stat"><strong>2</strong><span>Languages: Bangla, English</span></div>
+                        </div>
+                    </div>
+                    <figure class="photo reveal" style="--d:.2s;margin:0">
+                           <img src="image/jenin.jpeg" alt="Portrait of Nusrat Jahan Jenin wearing a blue saree and an AIUB lanyard" width="720"
+                            height="945" fetchpriority="high">
+                        <figcaption class="chip"><span class="pulse" aria-hidden="true"></span>Open to solar engineering
+                            roles</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="alt" id="about" aria-labelledby="h-about">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">About me</span>
+                    <h2 id="h-about">Background, goals &amp; achievements</h2>
+                </div>
+                <div class="about">
+                    <div class="grid">
+                        <article class="card reveal">
+                            <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 10 12 5 2 10l10 5 10-5z" />
+                                    <path d="M6 12v5c3 2 9 2 12 0v-5" />
+                                </svg></div>
+                            <h3>Academic background</h3>
+                            <p>I'm pursuing a Bachelor of Science in Electrical &amp; Electronic Engineering at American
+                                International University-Bangladesh (AIUB), with an expected graduation in 2028. Before
+                                university I completed my HSC (2023) and SSC (2021) at Jashore Shikkha Board Govt. Model
+                                School And College.</p>
+                        </article>
+                        <article class="card reveal" style="--d:.1s">
+                            <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <path d="M12 3v2M12 19v2M3 12h2M19 12h2" />
+                                </svg></div>
+                            <h3>Career goals</h3>
+                            <p>I'm aiming for a Junior Engineer (Solar) role where I can apply my knowledge to solar PV
+                                system design, installation, testing and commissioning on residential and industrial
+                                projects, while building practical engineering skills and strengthening my teamwork,
+                                communication and problem-solving.</p>
+                        </article>
+                    </div>
+                    <article class="card placeholder reveal" style="--d:.2s">
+                        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z" />
+                                <path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3" />
+                            </svg></div>
+                        <h3>Achievements</h3>
+                        
+                    <ul class="tags" style="margin-top:18px">
+                        <li class="tag">Academic Excellence</li>
+                        <li class="tag">Solar PV Design Project</li>
+                        <li class="tag">Renewable Energy Research</li>
+                        <li class="tag">Engineering Project Presentation</li>
+                        <li class="tag">Technical Skills Development</li>
+                        <li class="tag">Team Collaboration</li>
+                    </ul>
+
+                       
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== RESUME ===================== -->
+        <section id="resume" aria-labelledby="h-resume">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">Resume</span>
+                    <br>
+                    <h2 id="h-resume">Want to Know More About Me?</h2>
+                    <p>Explore my academic background, technical skills,
+                    projects and professional interests in detail.</p>
+                    <p style="margin-top:24px"><a class="btn btn-fill" href="cv/Nusrat_Jahan_Jenin_CV.pdf" download="Nusrat_Jahan_Jenin_CV.pdf">⬇ Download my CV (PDF)</a></p>
+                </div>
+
+                <div class="resume-cols">
+                    <div class="card reveal">
+                        <h3>Education</h3>
+                        <div class="timeline">
+                            <div class="tl"><span class="when">Expected 2028</span>
+                                <h4>B.Sc. in Electrical &amp; Electronic Engineering</h4>
+                                <p>American International University-Bangladesh (AIUB)</p>
+                            </div>
+                            <div class="tl"><span class="when">2023</span>
+                                <h4>Higher Secondary Certificate (HSC)</h4>
+                                <p>Jashore Shikkha Board Govt. Model School And College · Jessore Education Board</p>
+                            </div>
+                            <div class="tl"><span class="when">2021</span>
+                                <h4>Secondary School Certificate (SSC)</h4>
+                                <p>Jashore Shikkha Board Govt. Model School And College · Jessore Education Board</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card placeholder reveal" style="--d:.1s">
+                        <h3>Relevant courses</h3>
+                        
+                    <ul class="tags">
+                        <li class="tag">Electrical Circuit Analysis</li>
+                        <li class="tag">Electronic Devices & Circuits</li>
+                        <li class="tag">Electrical Machines</li>
+                        <li class="tag">Power System Analysis</li>
+                        <li class="tag">Renewable Energy Systems</li>
+                        <li class="tag">Power Electronics</li>
+                    </ul>
+
+                       
+                    </div>
+                </div>
+
+                <div class="grid g2">
+                    <div class="card skill-block reveal">
+                        <h3><span class="ico" style="margin:0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="4" />
+                                    <path
+                                        d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" />
+                                </svg></span>Technical skills</h3>
+                        <ul>
+                            <li><b>Solar PV installation:</b> panels, mounting structures, inverters,
+                                combiner/protection boxes; rooftop and ground-mounted systems</li>
+                            <li><b>System types:</b> On-Grid, Hybrid, Off-Grid and Battery Energy Storage (BESS);
+                                residential and industrial</li>
+                            <li><b>Solar irrigation pumps:</b> sizing, installation and troubleshooting</li>
+                            <li><b>Wiring &amp; testing:</b> cable management, system testing, commissioning, safety
+                                practices</li>
+                            <li><b>Site survey &amp; feasibility:</b> shading and load assessment</li>
+                            <li><b>Design &amp; estimation:</b> single-line diagrams, 3D layouts, BOQ and cost
+                                estimation</li>
+                            <li><b>Technical support:</b> on-site support, fault finding, end-to-end project execution
+                            </li>
+                        </ul>
+                        <div class="tags" style="margin-top:18px" aria-label="Software">
+                            <span class="tag">AutoCAD 2D/3D</span><span class="tag">SketchUp</span><span
+                                class="tag">PVsyst</span><span class="tag">Microsoft Office</span>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="card skill-block reveal" style="--d:.1s">
+                            <h3><span class="ico" style="margin:0" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    </svg></span>Transferable skills</h3>
+                            <ul>
+                                <li><b>Communication:</b> strong verbal communication, report writing and on-camera
+                                    presentation of engineering workflows</li>
+                                <li><b>Teamwork</b> and collaboration</li>
+                                <li><b>Problem-solving</b> and fault finding</li>
+                                <li><b>Time management</b> and willingness to learn</li>
+                            </ul>
+                        </div>
+                        <div class="card skill-block reveal" style="--d:.2s">
+                            <h3>Languages</h3>
+                            <div class="lang"><span class="tag">Bangla</span><span class="tag">English</span></div>
+                            <p class="note" style="margin-top:18px">References available upon request.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PROJECTS ===================== -->
+        <section class="alt" id="projects" aria-labelledby="h-proj">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">Sample projects</span>
+                    <h2 id="h-proj">Solar design work</h2>
+                    <p>Three design projects from my practical experience. Select a card to see my role, approach and
+                        outcomes.</p>
+                </div>
+                <div class="grid g3" id="pgrid"></div>
+            </div>
+        </section>
+
+        <dialog id="pm" aria-labelledby="pm-title">
+            <button class="dlg-x" id="pm-x" aria-label="Close project details">×</button>
+            <div class="dlg-body" id="pm-body"></div>
+        </dialog>
+
+        <!-- ===================== VIDEO ===================== -->
+        <section id="video" aria-labelledby="h-video">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">Introduction video</span>
+                    <h2 id="h-video">Meet me on camera</h2>
+                    <p>A short self-introduction covering who I am, my skills, interests and career aspirations.</p>
+                </div>
+                <div class="video">
+                    <div class="player reveal" id="player" role="region" aria-label="Introduction video"></div>
+                    <div class="card reveal" style="--d:.1s">
+                        <h3>What the video covers</h3>
+                        <ol class="script" style="margin-top:18px;padding:0;list-style:none">
+                            <li><span class="n">1</span>
+                                <div><b>Who I am</b><span>Name, university and field of study</span></div>
+                            </li>
+                            <li><span class="n">2</span>
+                                <div><b>My skills</b><span>Solar design tools, site survey, estimation,
+                                        communication</span></div>
+                            </li>
+                            <li><span class="n">3</span>
+                                <div><b>My projects &amp; interests</b><span>Residential PV, irrigation pumps, hybrid
+                                        systems with BESS</span></div>
+                            </li>
+                            <li><span class="n">4</span>
+                                <div><b>Career aspirations</b><span>Becoming a Junior Engineer (Solar)</span></div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section class="alt" id="contact" aria-labelledby="h-contact">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">Contact</span>
+                    <h2 id="h-contact">Let's connect</h2>
+                    <p>I'd be glad to hear about internships, junior engineering roles or solar projects.</p>
+                </div>
+                <div class="contact">
+                    <ul class="clist reveal">
+                        <li><span class="card ico" style="padding:0" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="5" width="18" height="14" rx="3" />
+                                    <path d="m3 7 9 6 9-6" />
+                                </svg></span>
+                            <div><small>Email</small><a href="mailto:nusrat10090@gmail.com">nusrat10090@gmail.com</a>
+                            </div>
+                        </li>
+                        <li><span class="card ico" style="padding:0" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+                                </svg></span>
+                            <div><small>Mobile</small><a href="tel:+8801881306634">+880 1881 306634</a></div>
+                        </li>
+                        <li><span class="card ico" style="padding:0" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" />
+                                    <circle cx="12" cy="10" r="2.5" />
+                                </svg></span>
+                            <div><small>Location</small><span class="v">Dhaka, Bangladesh</span></div>
+                        </li>
+                        <li><span class="card ico" style="padding:0" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1" />
+                                    <path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" />
+                                </svg></span>
+                            <div><small>LinkedIn / GitHub</small><span class="ph">https://github.com/nusratjahanjenin</span></div>
+                        </li>
+                    </ul>
+
+                    <form class="card reveal" style="--d:.1s" id="cform" novalidate>
+                        <div class="row"><label for="f-name">Your name</label><input id="f-name" name="name"
+                                autocomplete="name" required placeholder="Full name"></div>
+                        <div class="row"><label for="f-mail">Your email</label><input id="f-mail" name="email"
+                                type="email" autocomplete="email" required placeholder="you@example.com"></div>
+                        <div class="row"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required
+                                placeholder="How can I help?"></textarea></div>
+                        <button class="btn btn-fill" type="submit">Send via email</button>
+                        <p class="note" id="fnote" role="status" aria-live="polite">This opens your email app with the
+                            message ready to send.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <span>© <span id="yr">2026</span> Nusrat Jahan Jenin · EEE, AIUB</span>
+            <span>Built for Business Communication · E-Portfolio</span>
+        </div>
+    </footer>
+
+    <button class="totop" id="totop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="m5 15 7-7 7 7" />
+        </svg></button>
+
+    <script>
+        /* ==========================================================
+           CONFIG: edit these to complete the portfolio
+           ========================================================== */
+        const PHOTO = document.querySelector(".photo img").src;
+
+        // Introduction video: choose ONE.
+        //   { type:"youtube", src:"VIDEO_ID" }   e.g. https://youtu.be/VIDEO_ID
+        //   { type:"file",    src:"intro.mp4" }  a video file next to index.html
+        const VIDEO = {
+                type: "youtube",
+                src: "czZQ3HNTqFo"
+            };
+
+        // Project data. Add "image" (path/URL to a screenshot) to replace the illustrations.
+        const PROJECTS = [
+            {
+                id: "pv", kind: "pv",
+                image: "image/project1.png",
+                title: "Residential On-Grid Solar PV Design",
+                short: "Site survey, PV array layout, protection design, yield simulation and cost estimate for a home rooftop system.",
+                tech: ["AutoCAD", "PVsyst", "Microsoft Office"],
+                role: "Designer: carried out the survey, design, simulation and estimation.",
+                problem: "Size and lay out a grid-connected rooftop system that fits the available roof area and shading, and meets the household's daily energy load.",
+                approach: [
+                    "Carried out a site survey and feasibility assessment, estimating roof area, shading and daily energy load",
+                    "Designed the PV array, inverter and protection layout",
+                    "Prepared the single-line diagram (SLD) in AutoCAD",
+                    "Ran energy-yield simulation and loss analysis in PVsyst",
+                    "Prepared a Bill of Quantities (BOQ) and cost estimate"
+                ],
+                outcome: [
+                    "Single-line diagram of the full system",
+                    "Short PVsyst simulation report with loss analysis",
+                    "BOQ and cost estimation",
+                    "[Add key result, e.g. system size or yearly yield, if available]"
+                ]
+            },
+            {
+                id: "pump", kind: "pump",
+                image: "image/project2.png",
+                title: "Solar Irrigation Pump System",
+                short: "Sizing and planning of an off-grid solar pump setup based on water demand, head and daily sunlight hours.",
+                tech: ["SketchUp", "Off-grid design", "System sizing"],
+                role: "Designer: sized the system and planned wiring, protection and commissioning.",
+                problem: "Provide reliable irrigation water using solar power alone, matching the array and pump to water demand, pumping head and available sunlight.",
+                approach: [
+                    "Sized the solar array and pump from water demand, head and daily sunlight hours",
+                    "Planned wiring, protection and commissioning steps for the off-grid setup",
+                    "Created a 3D layout of the installation in SketchUp"
+                ],
+                outcome: [
+                    "Sized array and pump specification",
+                    "Wiring, protection and commissioning plan",
+                    "3D installation layout",
+                    "[Add key result, e.g. pump rating or daily water output, if available]"
+                ]
+            },
+            {
+                id: "bess", kind: "bess",
+                image: "image/project3.png",
+                title: "Hybrid Solar with Battery Storage (BESS)",
+                short: "A design study comparing On-Grid, Hybrid and Off-Grid options for a small industrial or residential load.",
+                tech: ["BESS", "Hybrid systems", "Technical report"],
+                role: "Analyst and presenter: compared configurations, calculated sizing and presented the results.",
+                problem: "Decide which solar configuration best suits a small load by comparing On-Grid, Hybrid and Off-Grid designs, including storage needs.",
+                approach: [
+                    "Compared On-Grid, Hybrid and Off-Grid configurations",
+                    "Calculated battery capacity and inverter rating",
+                    "Documented the findings in a technical report",
+                    "Presented the workflow and results in a clear verbal presentation"
+                ],
+                outcome: [
+                    "Comparison of the three system configurations",
+                    "Battery capacity and inverter rating calculations",
+                    "Technical report and verbal presentation",
+                    "[Add recommendation or key finding, if available]"
+                ]
+            }
+        ];
+
+        /* ---------- Illustrative SVG placeholders (replace via "image") ---------- */
+        const ART = {
+            pv: `<svg viewBox="0 0 400 250" role="img" aria-label="Illustration of a rooftop solar panel array" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5eead4" stop-opacity=".9"/><stop offset="1" stop-color="#3b1a7a"/></linearGradient></defs><circle cx="330" cy="55" r="28" fill="#f0b429"/><g stroke="#f0b429" stroke-width="3" stroke-linecap="round"><path d="M330 12v10M330 88v10M287 55h10M363 55h10M300 25l7 7M353 78l7 7M360 25l-7 7M307 78l-7 7"/></g><g transform="skewX(-18) translate(70 70)"><g fill="url(#g1)" stroke="#c4c4cc" stroke-width="1.5"><rect x="20" y="40" width="80" height="50" rx="3"/><rect x="108" y="40" width="80" height="50" rx="3"/><rect x="196" y="40" width="80" height="50" rx="3"/><rect x="20" y="98" width="80" height="50" rx="3"/><rect x="108" y="98" width="80" height="50" rx="3"/><rect x="196" y="98" width="80" height="50" rx="3"/></g></g><path d="M0 220h400v30H0z" fill="#1b0430"/></svg>`,
+            pump: `<svg viewBox="0 0 400 250" role="img" aria-label="Illustration of a solar panel powering an irrigation pump" preserveAspectRatio="xMidYMid slice"><circle cx="60" cy="50" r="24" fill="#f0b429"/><g transform="rotate(-18 150 120)"><rect x="90" y="80" width="130" height="70" rx="4" fill="#5eead4" fill-opacity=".85" stroke="#c4c4cc" stroke-width="2"/><path d="M133 80v70M176 80v70M90 103h130M90 127h130" stroke="#24063f" stroke-width="2"/></g><path d="M165 150v50" stroke="#c4c4cc" stroke-width="5"/><rect x="250" y="150" width="70" height="50" rx="10" fill="#f0b429"/><path d="M320 170h50v40" fill="none" stroke="#c4c4cc" stroke-width="6" stroke-linecap="round"/><g fill="#5eead4"><path d="M370 220c-8 12-8 18 0 18s8-6 0-18z"/><path d="M345 225c-6 9-6 14 0 14s6-5 0-14z"/></g><path d="M0 215c60-14 120 12 200 0s140-12 200 4v31H0z" fill="#1b0430"/></svg>`,
+            bess: `<svg viewBox="0 0 400 250" role="img" aria-label="Illustration of a battery connected to solar and grid" preserveAspectRatio="xMidYMid slice"><rect x="150" y="80" width="100" height="100" rx="14" fill="none" stroke="#c4c4cc" stroke-width="4"/><rect x="250" y="116" width="14" height="28" rx="4" fill="#c4c4cc"/><g fill="#5eead4"><rect x="164" y="94" width="72" height="20" rx="4"/><rect x="164" y="122" width="72" height="20" rx="4"/></g><rect x="164" y="150" width="72" height="20" rx="4" fill="#f0b429"/><g stroke="#f0b429" stroke-width="3" fill="none" stroke-linecap="round"><path d="M70 60l20 20h60"/><path d="M330 60l-20 20h-60" stroke="#5eead4"/><path d="M70 190l20-20h60" stroke="#c4c4cc"/></g><circle cx="58" cy="52" r="16" fill="#f0b429"/><path d="M322 44l16 10-16 10z" fill="#5eead4"/><rect x="48" y="184" width="22" height="22" rx="4" fill="#c4c4cc"/></svg>`
+        };
+        const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+        const media = p => ART[p.kind] + `<span class="cap">Add photo: ${p.image}</span>` + `<img src="${p.image}" alt="${p.title}" loading="lazy" style="position:absolute;inset:0" onload="this.previousElementSibling.remove()" onerror="this.remove()">`;
+        const li = a => a.map(x => `<li>${x}</li>`).join("");
+
+        /* ---------- Render project cards ---------- */
+        const grid = document.getElementById("pgrid");
+        PROJECTS.forEach((p, i) => {
+            const b = document.createElement("button");
+            b.type = "button"; b.className = "card pcard reveal"; b.style.setProperty("--d", i * 0.1 + "s");
+            b.setAttribute("aria-haspopup", "dialog");
+            b.innerHTML = `<div class="thumb">${media(p)}</div>
+    <div class="body"><h3>${p.title}</h3><p>${p.short}</p>
+    <div class="tags">${p.tech.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    <span class="more">View details ${ARROW}</span></div>`;
+            b.addEventListener("click", () => openProject(p, b));
+            grid.appendChild(b);
+        });
+
+        /* ---------- Project dialog ---------- */
+        const dlg = document.getElementById("pm"), pmBody = document.getElementById("pm-body");
+        let lastBtn = null;
+        function openProject(p, btn) {
+            lastBtn = btn;
+            pmBody.innerHTML = `<div class="dlg-hero">${media(p)}</div>
+    <h3 id="pm-title" style="font-size:1.6rem">${p.title}</h3>
+    <div class="tags" style="margin-top:12px">${p.tech.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    <div class="dlg-grid">
+      <div><h4>My role</h4><p>${p.role}</p></div>
+      <div><h4>The problem</h4><p>${p.problem}</p></div>
+      <div><h4>Problem-solving approach</h4><ul>${li(p.approach)}</ul></div>
+      <div><h4>Outcomes</h4><ul>${li(p.outcome)}</ul></div>
+    </div>`;
+            dlg.showModal();
+            document.body.style.overflow = "hidden";
+        }
+        function closeDlg() { dlg.close(); }
+        dlg.addEventListener("close", () => { document.body.style.overflow = ""; lastBtn && lastBtn.focus(); });
+        document.getElementById("pm-x").addEventListener("click", closeDlg);
+        dlg.addEventListener("click", e => { if (e.target === dlg) closeDlg(); });
+
+        /* ---------- Intro video ---------- */
+        (function () {
+            const el = document.getElementById("player");
+           if (VIDEO.type === "youtube" && VIDEO.src) {
+                const videoId = VIDEO.src.match(
+                    /(?:shorts\/|youtu\.be\/|embed\/|v=)([a-zA-Z0-9_-]{11})/
+                )?.[1] || VIDEO.src;
+
+                el.innerHTML = `<iframe
+        src="https://www.youtube-nocookie.com/embed/${videoId}"
+        title="Introduction Video"
+        loading="lazy"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>`;
+            }
+        })();
+
+        /* ---------- Navigation ---------- */
+        const burger = document.getElementById("burger"), menu = document.getElementById("menu");
+        burger.addEventListener("click", () => { const o = menu.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
+        menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }));
+        document.addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) { menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); burger.focus(); } });
+
+        const links = [...menu.querySelectorAll("a")];
+        const targets = links.map(a => document.querySelector(a.getAttribute("href")));
+        const totop = document.getElementById("totop");
+        function onScroll() {
+            const y = scrollY + 140; let cur = 0;
+            targets.forEach((t, i) => { if (t && t.offsetTop <= y) cur = i; });
+            links.forEach((a, i) => { a.classList.toggle("active", i === cur); i === cur ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current"); });
+            totop.classList.toggle("show", scrollY > 600);
+        }
+        addEventListener("scroll", onScroll, { passive: true }); onScroll();
+        totop.addEventListener("click", () => scrollTo({ top: 0 }));
+
+        /* ---------- Scroll reveal ---------- */
+        document.body.classList.remove("no-js");
+        const items = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window) {
+            const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+            items.forEach(el => io.observe(el));
+        } else items.forEach(el => el.classList.add("in"));
+
+        /* ---------- Contact form (opens the visitor's email app) ---------- */
+        document.getElementById("cform").addEventListener("submit", e => {
+            e.preventDefault();
+            const f = e.target, note = document.getElementById("fnote");
+            if (!f.checkValidity()) { note.textContent = "Please fill in your name, a valid email and a message."; f.reportValidity(); return; }
+            const body = `${f.message.value}\n\nFrom: ${f.name.value} (${f.email.value})`;
+            location.href = `mailto:nusrat10090@gmail.com?subject=${encodeURIComponent("Portfolio message from " + f.name.value)}&body=${encodeURIComponent(body)}`;
+            note.textContent = "Opening your email app. If nothing happens, email me directly at nusrat10090@gmail.com.";
+        });
+        document.getElementById("yr").textContent = new Date().getFullYear();
+
+        /* ---------- 3D glow background + cursor trail ---------- */
+        (function () {
+            const bg = document.getElementById("bg3d"), fx = document.getElementById("fx");
+            const b = bg.getContext("2d"), f = fx.getContext("2d");
+            const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+            let W, H, dpr, mx = 0, my = 0, tx = 0, ty = 0;
+            const small = () => W < 700;
+
+            function resize() {
+                dpr = Math.min(devicePixelRatio || 1, 2);
+                W = innerWidth; H = innerHeight;
+                [bg, fx].forEach(c => { c.width = W * dpr; c.height = H * dpr; });
+                b.setTransform(dpr, 0, 0, dpr, 0, 0);
+                f.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize(); addEventListener("resize", resize);
+
+            /* parallax follows pointer */
+            addEventListener("mousemove", e => { tx = e.clientX / W - .5; ty = e.clientY / H - .5; }, { passive: true });
+
+            /* ----- 3D wireframe shapes ----- */
+            const CUBE = {
+                v: [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]],
+                e: [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]
+            };
+            const OCT = {
+                v: [[1.3,0,0],[-1.3,0,0],[0,1.3,0],[0,-1.3,0],[0,0,1.3],[0,0,-1.3]],
+                e: [[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[4,3],[3,5],[5,2]]
+            };
+            const PYR = {
+                v: [[0,-1.3,0],[-1.2,1,-1.2],[1.2,1,-1.2],[1.2,1,1.2],[-1.2,1,1.2]],
+                e: [[0,1],[0,2],[0,3],[0,4],[1,2],[2,3],[3,4],[4,1]]
+            };
+            const COLORS = ["94,234,212", "168,85,247", "240,180,41"];
+            const shapes = [];
+            const N = () => 0;
+            function seed() {
+                shapes.length = 0;
+                const geos = [CUBE, OCT, PYR];
+                for (let i = 0; i < N(); i++) {
+                    shapes.push({
+                        g: geos[i % 3],
+                        x: (Math.random() * 2 - 1) * 520,
+                        y: (Math.random() * 2 - 1) * 300,
+                        z: 500 + Math.random() * 900,
+                        s: 30 + Math.random() * 48,
+                        rx: Math.random() * 6, ry: Math.random() * 6,
+                        vx: (Math.random() - .5) * .012, vy: (Math.random() - .5) * .016,
+                        ph: Math.random() * 6.28,
+                        c: COLORS[i % 3]
+                    });
+                }
+            }
+            seed();
+
+            /* ----- floating dust ----- */
+            const dust = Array.from({ length: 70 }, () => ({
+                x: Math.random(), y: Math.random(), z: Math.random(),
+                v: .00004 + Math.random() * .00012
+            }));
+
+            function proj(x, y, z, cx, cy, fl) { const k = fl / z; return [cx + x * k, cy + y * k, k]; }
+
+            function drawGrid(t, cx, hy, fl) {
+                const scroll = (typeof scrollY === "number" ? scrollY : 0) * .0016;
+                b.lineWidth = 1;
+                /* depth lines (horizontal) moving toward viewer */
+                for (let i = 0; i < 22; i++) {
+                    const p = ((i + (t * .00035 + scroll) * 22) % 22) / 22;
+                    const z = 60 + Math.pow(p, 2.2) * 2400;
+                    const y = hy + 260 * fl / (z + 40) * 1.0;
+                    const a = Math.max(0, 1 - p) * .22 * (.4 + p);
+                    if (y > H + 4) continue;
+                    b.strokeStyle = "rgba(168,85,247," + a + ")";
+                    b.beginPath(); b.moveTo(0, y); b.lineTo(W, y); b.stroke();
+                }
+                /* converging lines */
+                for (let i = -12; i <= 12; i++) {
+                    const bx = cx + i * W * .11 - mx * 40;
+                    const a = .18 * (1 - Math.abs(i) / 13);
+                    b.strokeStyle = "rgba(94,234,212," + a + ")";
+                    b.beginPath(); b.moveTo(cx - mx * 20 + i * 14, hy); b.lineTo(bx + i * W * .06, H + 10); b.stroke();
+                }
+                /* glowing horizon */
+                const g = b.createLinearGradient(0, hy - 90, 0, hy + 40);
+                g.addColorStop(0, "rgba(168,85,247,0)");
+                g.addColorStop(.7, "rgba(168,85,247,.16)");
+                g.addColorStop(1, "rgba(94,234,212,.0)");
+                b.fillStyle = g; b.fillRect(0, hy - 90, W, 130);
+            }
+
+            function drawShape(sh, t, cx, cy, fl) {
+                sh.rx += sh.vx; sh.ry += sh.vy;
+                const sx = Math.sin(sh.rx), cxr = Math.cos(sh.rx), sy = Math.sin(sh.ry), cyr = Math.cos(sh.ry);
+                const bob = Math.sin(t * .0007 + sh.ph) * 22;
+                const pts = sh.g.v.map(v => {
+                    let [x, y, z] = v;
+                    let y1 = y * cxr - z * sx, z1 = y * sx + z * cxr;
+                    let x2 = x * cyr + z1 * sy, z2 = -x * sy + z1 * cyr;
+                    return proj(
+                        sh.x + x2 * sh.s - mx * 90 * (1000 / sh.z),
+                        sh.y + y1 * sh.s + bob - my * 60 * (1000 / sh.z),
+                        sh.z + z2 * sh.s, cx, cy, fl);
+                });
+                const depth = Math.min(1, 1100 / sh.z);
+                const al = .22 + .38 * depth;
+                b.lineWidth = 1.2;
+                b.shadowColor = "rgba(" + sh.c + ",.9)";
+                b.shadowBlur = 14;
+                b.strokeStyle = "rgba(" + sh.c + "," + al + ")";
+                b.beginPath();
+                sh.g.e.forEach(([a, c]) => { b.moveTo(pts[a][0], pts[a][1]); b.lineTo(pts[c][0], pts[c][1]); });
+                b.stroke();
+                b.shadowBlur = 0;
+                b.fillStyle = "rgba(" + sh.c + "," + (al * .9) + ")";
+                pts.forEach(p => { b.beginPath(); b.arc(p[0], p[1], 1.6, 0, 6.283); b.fill(); });
+            }
+
+            function frame(t) {
+                mx += (tx - mx) * .05; my += (ty - my) * .05;
+                b.clearRect(0, 0, W, H);
+                const cx = W / 2, cy = H * .46, hy = H * .62, fl = Math.min(W, 1100) * .9;
+                b.globalCompositeOperation = "lighter";
+                drawGrid(t, cx, hy, fl);
+                shapes.slice().sort((a, c) => c.z - a.z).forEach(sh => drawShape(sh, t, cx, cy, fl));
+                dust.forEach(d => {
+                    d.y -= d.v * (1 + d.z * 2); if (d.y < -.02) { d.y = 1.02; d.x = Math.random(); }
+                    const px = d.x * W - mx * 30 * d.z, py = d.y * H;
+                    const r = .6 + d.z * 1.6;
+                    b.fillStyle = "rgba(196,180,255," + (.25 + d.z * .4) + ")";
+                    b.beginPath(); b.arc(px, py, r, 0, 6.283); b.fill();
+                });
+                b.globalCompositeOperation = "source-over";
+                drawFx();
+                requestAnimationFrame(frame);
+            }
+
+            /* ----- cursor / touch glow trail (fades away) ----- */
+            const parts = [], rings = [];
+            let lastX = null, lastY = null, lastTouch = 0, hue = 170;
+            function emit(x, y) {
+                if (reduce) return;
+                if (lastX !== null) {
+                    const dx = x - lastX, dy = y - lastY, d = Math.hypot(dx, dy);
+                    const steps = Math.min(6, Math.ceil(d / 14));
+                    for (let i = 1; i <= steps; i++) spawn(lastX + dx * i / steps, lastY + dy * i / steps);
+                } else spawn(x, y);
+                lastX = x; lastY = y;
+            }
+            function spawn(x, y) {
+                hue = (hue + 2.5) % 360;
+                const c = (hue % 120) < 60 ? "94,234,212" : "180,100,255";
+                parts.push({
+                    x: x + (Math.random() - .5) * 3, y: y + (Math.random() - .5) * 3,
+                    vx: (Math.random() - .5) * .5, vy: (Math.random() - .5) * .5 - .08,
+                    r: 4 + Math.random() * 6, life: 1, c
+                });
+                if (parts.length > 160) parts.shift();
+            }
+            function ring(x, y) { if (!reduce) rings.push({ x, y, r: 3, life: 1 }); }
+            function drawFx() {
+                f.clearRect(0, 0, W, H);
+                f.globalCompositeOperation = "lighter";
+                for (let i = parts.length - 1; i >= 0; i--) {
+                    const p = parts[i];
+                    p.life -= .028; p.x += p.vx; p.y += p.vy; p.r *= .985;
+                    if (p.life <= 0) { parts.splice(i, 1); continue; }
+                    const g = f.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+                    g.addColorStop(0, "rgba(" + p.c + "," + (.55 * p.life) + ")");
+                    g.addColorStop(.4, "rgba(" + p.c + "," + (.22 * p.life) + ")");
+                    g.addColorStop(1, "rgba(" + p.c + ",0)");
+                    f.fillStyle = g; f.beginPath(); f.arc(p.x, p.y, p.r, 0, 6.283); f.fill();
+                }
+                for (let i = rings.length - 1; i >= 0; i--) {
+                    const r = rings[i];
+                    r.life -= .045; r.r += 1.6;
+                    if (r.life <= 0) { rings.splice(i, 1); continue; }
+                    f.lineWidth = 1.5;
+                    f.strokeStyle = "rgba(240,180,41," + (.7 * r.life) + ")";
+                    f.shadowColor = "rgba(240,180,41,.9)"; f.shadowBlur = 6;
+                    f.beginPath(); f.arc(r.x, r.y, r.r, 0, 6.283); f.stroke();
+                    f.shadowBlur = 0;
+                }
+                f.globalCompositeOperation = "source-over";
+            }
+            const fromTouch = () => Date.now() - lastTouch < 600;
+            addEventListener("mousemove", e => { if (!fromTouch()) emit(e.clientX, e.clientY); }, { passive: true });
+            addEventListener("mousedown", e => { if (!fromTouch()) ring(e.clientX, e.clientY); }, { passive: true });
+            addEventListener("mouseleave", () => { lastX = lastY = null; });
+            addEventListener("touchstart", e => {
+                lastTouch = Date.now(); lastX = lastY = null;
+                const t = e.touches[0]; emit(t.clientX, t.clientY); ring(t.clientX, t.clientY);
+            }, { passive: true });
+            addEventListener("touchmove", e => {
+                lastTouch = Date.now(); const t = e.touches[0]; emit(t.clientX, t.clientY);
+            }, { passive: true });
+            addEventListener("touchend", () => { lastTouch = Date.now(); lastX = lastY = null; }, { passive: true });
+
+            if (reduce) { drawStatic(); }
+            else requestAnimationFrame(frame);
+            function drawStatic() {
+                const cx = W / 2, cy = H * .46, hy = H * .62, fl = Math.min(W, 1100) * .9;
+                b.globalCompositeOperation = "lighter";
+                drawGrid(0, cx, hy, fl);
+                shapes.forEach(sh => drawShape(sh, 0, cx, cy, fl));
+                b.globalCompositeOperation = "source-over";
+            }
+        })();
+    </script>
+</body>
+
+</html>
